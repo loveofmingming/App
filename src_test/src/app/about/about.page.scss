@@ -1,0 +1,16 @@
+.top {
+  height: 150px;
+  border-top: 1px solid var(--ion-color-light-shade);
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+.content {
+  font-size: var(--ion-font-size-small);
+  padding: 20px;
+  background-color: var(--ion-color-secondary);
+}
+
+.content div {
+  margin-bottom: 10px;
+  line-height: 200%;
+}

@@ -1,0 +1,65 @@
+打包APK
+
+1，首先确认电脑已经安装对应的sdk
+
+2,根据以下命令复制粘贴即可（后面注释不进入命令）
+
+ionic cordova platform remove android   //移除项目内已经存在的android环境
+
+ionic cordova platform add android //添加环境
+
+
+ionic cordova build android //进行打包
+
+如命令行见到 APK路径 即打包成功（第一次打包会比较慢 会下载相关打包组件）
+
+===============================================================================================================
+
+前后端交互
+
+1，在使用交互的ts文件中 头部引入 import { HttpClient, HttpParams } from '@angular/common/http';
+
+2，构造方法中定义 constructor(public http: HttpClient) { }
+
+3，this.http.get(this.url+'/tasks/Tasks/getTasks'); 进行交互即可，例子可见model/tasks.model.ts
+
+4，实际调用方法 this.http.get(this.url+'/tasks/Tasks/getTasks').subscribe(res => {alert(res)｝）
+
+5，因后端使用了urlencode 在ionic中已经封装好公共方法解密 可调用model/tools.model.ts 中decodeUrlList方法（调用自
+
+定义model说明 往下找）
+
+===============================================================================================================
+自定义model的建立和使用
+1，现在已经建立好model文件夹 在下面直接建立ts文件即可 规则为 xx.model.ts
+
+2,建立好自己的model文件 在model/index.ts 文件进行 引入export * from './xx.model';
+
+3，在app.module.ts中进行注册 import { TasksModel ,ToolsModel，xxModel} from './model';
+
+app.module.ts下面@NgModule需要定义 可见ToolsModel 下面仿写即可
+
+4，在应用的ts文件中 进行引入import { TasksModel,ToolsModel } from '../model'; 定义 constructor(public 
+
+xxmodel:xxmodel）即可使用
+
+5，使用方法 this.xxmodel.getAllxx()
+
+
+===============================================================================================================
+ionic 插件使用规则
+
+1，需在app.module.ts中进行引入 定义 相机方法为例
+
+头部 import { Camera } from '@ionic-native/camera/ngx';
+
+在下面@NgModule=> providers: [Camera,]
+
+2,在需使用的ts中 引入定义
+
+头部 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+
+构造  constructor(private camera: Camera ,）
+
+3，方法内按照手册使用即可
+

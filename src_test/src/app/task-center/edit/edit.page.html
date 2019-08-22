@@ -1,0 +1,101 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-buttons slot="start">
+                <ion-button (click)="back()" color="dark">
+                    <ion-icon name="arrow-back"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-buttons>
+        <ion-title>
+            <span *ngIf="state == 1">做任务</span>
+            <span *ngIf="state == 3">修改</span>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button
+                    (click)="showExplain()"
+                    class="font-small font-color-default">
+                任务说明
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="state == 1" class="task-desc">
+        <div class="with-thumb" style="width: 100%;display:inline-block;">
+            <img src="assets/samples/gd1.png" style="float:left"/>
+            <div style="float:left;margin-left:10px;">
+                项目现场拍照
+            </div>
+            <div style="float:right;">
+                最多奖励 <span class="font-color-primary">¥100元</span>
+            </div>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">新型混炼胶生产线项目</span>
+        </div>
+        <div class="font-small">
+            项目简介: <span class="font-color-gray">甲方投资10亿元新建新型混炼胶生产线项目，预计2021年投入实用。建成后年产新型橡胶18万吨。</span>
+        </div>
+        <div class="font-small">
+            项目地址: <span class="font-color-gray">河北省保定市市南开发区东方路28号</span>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">河北信达实业有限公司</span>
+        </div>
+    </div>
+
+    <div class="font-small">
+        <div *ngFor="let item of items; let index = index; let last = last">
+            <div class="font-small card">
+                <div style="display: table; width: 100%;">
+                    <div style="display: table-cell;width:1px;white-space: nowrap;">{{index+1}}.</div>
+                    <div class="task-item-name" style="display:table-cell; padding-left:2px;">
+                        <ion-icon *ngIf="item.is_gps == 1" name="pin"></ion-icon>
+                        {{item.name}}
+                    </div>
+                    <div class="font-color-primary"
+                         style="display: table-cell;text-align: right;padding-right: 20px;">
+                        查看示例
+                    </div>
+                </div>
+                <div style="clear: both;padding:5px 15px;">
+                    <div *ngIf="item.is_gps == 0">
+                        <div class="thumb font-color-gray font-large" tappable (click)="toUploadPhoto()">
+                            <ion-icon name="add"></ion-icon>
+                        </div>
+                        <div class="thumb font-color-gray">
+                            放弃
+                        </div>
+                    </div>
+                    <div *ngIf="item.is_gps == 1">
+                        <ion-button (click)="locate()" class="small" size="small" fill="outline">
+                            我在现场
+                        </ion-button>
+                        <ion-button (click)="locate()" class="small" size="small" style="margin-left:10px"
+                                    fill="outline">
+                            不在现场
+                        </ion-button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!last" class="divider"></div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <div padding>
+        <div>
+            <ion-button class="button-main">
+                提交
+            </ion-button>
+        </div>
+        <div>
+            <ion-button class="button-main" color="medium">
+                取消
+            </ion-button>
+        </div>
+    </div>
+</ion-footer>

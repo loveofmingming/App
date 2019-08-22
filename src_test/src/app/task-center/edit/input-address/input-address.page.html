@@ -1,0 +1,20 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="arrow-back" color="dark"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            输入地址
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="finish()" class="font-small font-color-default">
+                完成
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <div class="bg" style="padding:10px 15px;">
+        <ion-input placeholder="请输入地址" autofocus required></ion-input>
+    </div>
+</ion-header>

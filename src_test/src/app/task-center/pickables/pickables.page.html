@@ -1,0 +1,35 @@
+<ion-content class="bg">
+    <ion-list>
+        <div *ngFor="let item of items" class="card" tappable (click)="showExplain()">
+            <table>
+                <tr>
+                    <td class="img">
+                        <img src="assets/samples/{{item.photo}}">
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <div class="truncate" style="margin-bottom:5px">
+                            {{item.title}}
+                        </div>
+                        <div class="truncate font-color-gray" style="margin-bottom:5px">
+                            {{item.desc}}
+                        </div>
+                        <div class="font-color-gray">
+                            距离您大约{{item.distance}}
+                        </div>
+                    </td>
+                    <td style="text-align: center;width: 70px">
+                        <div style="margin-bottom: 5px;">
+                            现金奖励
+                        </div>
+                        <div class="font-color-primary">
+                            ￥{{item.bonus}}元
+                        </div>
+                        <ion-button size="small" (click)="goMine($event)">
+                            领任务
+                        </ion-button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-list>
+</ion-content>

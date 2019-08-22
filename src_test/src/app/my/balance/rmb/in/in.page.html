@@ -1,0 +1,26 @@
+<ion-content class="bg">
+    <ion-list style="margin-top: 10px">
+        <div *ngFor="let item of items" class="list-item">
+            <table>
+                <tr>
+                    <td>
+                        {{ item.title }}
+                    </td>
+                    <td class="amount">
+                        + {{ item.amount }}
+                    </td>
+                </tr>
+            </table>
+            <table class="font-smaller font-color-gray">
+                <tr>
+                    <td class="truncate">
+                        {{ item.desc }}
+                    </td>
+                    <td>
+                        {{ item.bonusTime }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-list>
+</ion-content>

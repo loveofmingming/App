@@ -1,0 +1,28 @@
+<ion-header no-border>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-icon name="pin"></ion-icon>
+            <ion-label class="tab-item-label">北京</ion-label>
+        </ion-buttons>
+        <ion-title>任务中</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="goMessage()">
+                <ion-label class="tab-item-label">消息</ion-label>
+                <ion-badge color="secondary" style="margin-left:3px;">3</ion-badge>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-tabs>
+        <ion-tab-bar slot="top" class="inner">
+            <ion-tab-button class="tab-btn-selected" tab="pickables">
+                <ion-label>领任务</ion-label>
+            </ion-tab-button>
+            <ion-tab-button class="tab-btn-selected" tab="mine">
+                <ion-label>我的任务({{ myTasks?.length }})</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+</ion-content>

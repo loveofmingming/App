@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()" color="dark">
+                取消
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            所在位置
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="finish()" color="dark">
+                完成
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <div class="bg">
+        <ion-searchbar placeholder="搜索附近位置" autofocus animated></ion-searchbar>
+    </div>
+    <div class="fun">
+        <div style="float:right;display: inline-block;">
+            <ion-button (click)="showInputAddress()" class="font-small font-color-waiting" fill="clear">
+                手动输入
+            </ion-button>
+        </div>
+    </div>
+</ion-header>
+
+<ion-content class="bg">
+    <ion-list>
+        <div *ngFor="let index of [1,2,3,4,5,6,7,8]" class="item">
+            <div class="name">
+                中国招标采购导航网
+            </div>
+            <div class="address font-small font-color-gray">
+                北京是海淀区人民大学南路大华天坛大厦6层
+            </div>
+        </div>
+    </ion-list>
+</ion-content>

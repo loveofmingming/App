@@ -1,0 +1,118 @@
+ion-header img {
+  width: var(--ion-thumb-medium);
+  height: var(--ion-thumb-medium);
+}
+
+ion-tab-bar.inner {
+  border: 1px solid var(--ion-color-primary);
+}
+
+ion-tab-bar {
+  height: 40px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  font-size: var(--ion-font-size-small);
+  padding: 8px;
+}
+
+td:first-child {
+  text-align: right;
+  vertical-align: top;
+  padding-right: 0;
+}
+
+td:not(:first-child) {
+  width: 33%;
+  text-align: center;
+}
+
+tr.header, tr.footer {
+  background-color: var(--ion-color-light);
+  text-align: center;
+}
+
+tr.footer {
+  color: var(--ion-color-primary);
+}
+
+tr {
+  border-bottom: 1px solid var(--ion-color-light);
+}
+
+.ask, .answer {
+  padding: 5px 10px;
+}
+
+.answer {
+  font-size: var(--ion-font-size-smaller);
+  padding-bottom: 10px;
+  color: var(--ion-color-dark-tint);
+}
+
+.answer div {
+  color: var(--ion-color-medium);
+  padding: 5px 10px;
+  display: inline-block;
+  width: 100%;
+}
+
+.answer div span:first-child {
+  width: 30%;
+  display: inline-block;
+}
+
+.ask {
+  padding-top: 10px;
+}
+
+.with-thumb {
+  line-height: var(--ion-thumb-medium);
+}
+
+.tab-btn-selected {
+  color: var(--ion-color-primary);
+}
+
+.tab-btn-selected[aria-selected=true] {
+  background-color: var(--ion-color-primary);
+  color: #fff;
+}
+
+.tab-bar {
+  width: 100%;
+  display: flex;
+  border: 1px solid var(--ion-color-primary);
+}
+
+.tab {
+  flex: 1;
+  color: var(--ion-color-primary);
+  text-align: center;
+  padding: 10px;
+}
+
+.tab-selected {
+  background-color: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+}
+
+.card {
+  background-color: #fff;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 5px 5px 10px;
+}
+
+.card img {
+  width: var(--ion-thumb-large);
+  height: var(--ion-thumb-large);
+}
+
+.task-item-name {
+  color:brown;
+}

@@ -1,0 +1,26 @@
+<ion-header no-border>
+    <second-page-header backUrl="home/my">
+        基本信息
+    </second-page-header>
+</ion-header>
+
+<ion-content class="bg">
+    <ion-item lines="none" (click)="toChooseAvatar()" detail>
+        头像
+        <ion-avatar slot="end">
+            <img src="assets/avatar.jpg">
+        </ion-avatar>
+    </ion-item>
+    <ion-item lines="none" (click)="toEditName()" detail>
+        姓名
+        <ion-text slot="end">
+            李林申
+        </ion-text>
+    </ion-item>
+    <ion-item lines="none" (click)="toEditCompany()" detail>
+        所在公司
+        <ion-text slot="end">
+            北京四方达科技有限公司
+        </ion-text>
+    </ion-item>
+</ion-content>

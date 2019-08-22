@@ -1,0 +1,184 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-buttons slot="start">
+                <ion-button (click)="back()" color="dark">
+                    <ion-icon name="arrow-back"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-buttons>
+        <ion-title>
+            任务详情
+        </ion-title>
+    </ion-toolbar>
+    <div padding style="line-height: 2">
+        <div class="with-thumb" style="width: 100%;display:inline-block;">
+            <img src="assets/samples/gd1.png" style="float:left"/>
+            <div style="float:left;margin-left:10px;">
+                项目现场拍照
+            </div>
+            <div style="float:right;">
+                最多奖励 <span class="font-color-primary">¥100元</span>
+            </div>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">新型混炼胶生产线项目</span>
+        </div>
+        <div class="font-small">
+            项目简介: <span class="font-color-gray">甲方投资10亿元新建新型混炼胶生产线项目，预计2021年投入实用。建成后年产新型橡胶18万吨。</span>
+        </div>
+        <div class="font-small">
+            项目地址: <span class="font-color-gray">河北省保定市市南开发区东方路28号</span>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">河北信达实业有限公司</span>
+        </div>
+    </div>
+    <div class="tab-bar">
+        <div class="tab" tappable (click)="tabSelected = 0" [class.tab-selected]="tabSelected == 0">任务说明</div>
+        <div class="tab" tappable (click)="tabSelected = 1" [class.tab-selected]="tabSelected == 1">酬劳细则</div>
+    </div>
+</ion-header>
+
+<ion-content>
+    <!--<ion-tabs>-->
+    <!--<ion-tab-bar slot="top" class="inner">-->
+    <!--<ion-tab-button tab="items" class="tab-btn-selected">-->
+    <!--<ion-label>任务说明</ion-label>-->
+    <!--<ion-pane>-->
+    <!--hello-->
+    <!--</ion-pane>-->
+    <!--</ion-tab-button>-->
+    <!--<ion-tab-button tab="bonus" class="tab-btn-selected">-->
+    <!--<ion-label>酬劳细则</ion-label>-->
+    <!--</ion-tab-button>-->
+    <!--</ion-tab-bar>-->
+    <!--</ion-tabs>-->
+    <div *ngIf="tabSelected == 0" class="font-small">
+        <div class="font-color-primary" style="padding-left:10px; padding-top:5px;">
+            需要您前往施工现场拍照并上传。
+        </div>
+        <div *ngFor="let item of data.items; let index = index; let last = last">
+            <div class="font-small card">
+                <div>
+                    <div style="float: left">{{index+1}}.</div>
+                    <div style="float: left;margin-left:2px;max-width: 95%">
+                        <span class="task-item-name">
+                            {{item.name}}
+                        </span>
+                        <span style="margin-left:5px;" class="font-color-gray">
+                            {{item.descr}}
+                        </span>
+                    </div>
+                </div>
+                <div *ngIf="item.is_gps == 0" style="clear: both;padding:5px 15px;">
+                    <img *ngFor="let i of [].constructor(item.photo_amount)" style="margin-right:10px;"
+                         src="assets/samples/gd1.png"/>
+                </div>
+            </div>
+            <div *ngIf="!last" class="divider"></div>
+        </div>
+
+        <div class="tip" padding="">
+            <div>注:</div>
+            <div>a. 图片中的文字要求清晰可见。</div>
+            <div>b. 24小时内(不包含非工作日)完成任务，如未完成将会24小时后自动释放。</div>
+        </div>
+    </div>
+
+    <div *ngIf="tabSelected == 1">
+        <table>
+            <tr class="header">
+                <td></td>
+                <td>任务分项</td>
+                <td>奖励方案一</td>
+                <td>奖励方案二</td>
+            </tr>
+            <tr *ngFor="let item of data.items; let index = index; let last = last">
+                <td>
+                    {{index+1}}.
+                </td>
+                <td style="text-align: left;padding-left:2px">
+                    {{item.name}}
+                </td>
+                <td class="font-smaller font-color-gray">
+                    <span class="font-color-primary">{{item.bonus.rmb.yuan}}</span>元
+                    +
+                    <span class="font-color-primary">{{item.bonus.rmb.credit}}</span>信誉值
+                </td>
+                <td class="font-smaller font-color-gray">
+                    <span class="font-color-primary">{{item.bonus.dhb.yuan}}</span>元
+                    +
+                    <span class="font-color-primary">{{item.bonus.dhb.credit}}</span>信誉值
+                </td>
+            </tr>
+            <tr class="footer">
+                <td></td>
+                <td>最 多</td>
+                <td>
+                    {{data.bonus.rmb.yuan}}元+{{data.bonus.rmb.credit}}信誉值
+                </td>
+                <td>
+                    {{data.bonus.dhb.yuan}}元+{{data.bonus.dhb.credit}}信誉值
+                </td>
+            </tr>
+        </table>
+        <div class="font-small">
+            <div class="caution" style="padding:10px;vertical-align: middle;display:inline-block">
+                <ion-icon class="font-default" name="alert"></ion-icon>
+                <span style="margin-left: 5px;">第2、3、4项审核均未通过，其余项视为无效</span>
+            </div>
+            <div class="ask">导航币有什么用？</div>
+            <div class="answer">
+                导航币可在换购导航网信息服务、广告服务时享受折扣优惠
+            </div>
+            <div class="divider"></div>
+            <div class="ask">信誉值是什么？</div>
+            <div class="answer">
+                信誉值是用户对导航网的贡献值:
+            </div>
+            <div class="answer">
+                》信誉值越高，可领取任务越多:
+            </div>
+            <div class="answer" style="padding:0 10px 5px 10px">
+                <div style="padding-top:0">
+                    <span>信誉值区间</span>
+                    <span>进行中任务项数</span>
+                </div>
+                <div>
+                    <span>0-19</span>
+                    <span>最多一项(任务完成后可继续领取)</span>
+                </div>
+                <div>
+                    <span>20-39</span>
+                    <span>最多两项</span>
+                </div>
+                <div>
+                    <span>40-59</span>
+                    <span>最多三项</span>
+                </div>
+                <div>
+                    <span>60-79</span>
+                    <span>最多六项</span>
+                </div>
+                <div>
+                    <span>80以上</span>
+                    <span>最多十项</span>
+                </div>
+            </div>
+            <div class="answer">
+                》信誉值大于100，可选择其他城市任务
+            </div>
+            <div class="answer">
+                》导航网将按信誉值大小优先向业主推荐
+            </div>
+            <div class="answer">
+                》另外还有机会获得惊喜礼包，获邀参加导航网的福利旅游，公司年会等老会员回馈活动。
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer *ngIf="pickable" padding>
+    <ion-button class="button-main" (click)="pick()">领取任务</ion-button>
+</ion-footer>

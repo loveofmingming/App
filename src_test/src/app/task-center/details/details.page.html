@@ -1,0 +1,155 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="back()" color="dark">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            任务详情
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button
+                    (click)="showExplain()"
+                    class="font-small font-color-default">
+                任务说明
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="task.state === 3 && task.expired === 0" class="primary font-small"
+         style="padding:15px 15px 5px 15px">
+        <div>您的部分提交项未合格，请尽快修改，过期将自动视为不合格。</div>
+        <ol>
+            <li>项目通讯录不清晰</li>
+            <li>项目地址不正确</li>
+        </ol>
+        <div class="func">
+            (还剩1小时30分)
+            <span style="float:right" class="buttons">
+                <ion-button (click)="back()"
+                            size="small"
+                            class="small"
+                            fill="outline"
+                            color="secondary"
+                            style="padding-right: 5px;">
+                    放弃修改
+                </ion-button>
+                <ion-button (click)="goEdit()"
+                            size="small"
+                            class="small"
+                            fill="outline"
+                            color="secondary">
+                    去修改
+                </ion-button>
+            </span>
+        </div>
+    </div>
+
+    <div padding style="line-height: 2">
+        <div class="with-thumb" style="width: 100%;display:inline-block;">
+            <img class="task-thumb" src="assets/samples/gd1.png" style="float:left"/>
+            <div style="float:left;margin-left:10px;">
+                项目现场拍照
+            </div>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">新型混炼胶生产线项目</span>
+        </div>
+        <div class="font-small">
+            项目简介: <span class="font-color-gray">甲方投资10亿元新建新型混炼胶生产线项目，预计2021年投入实用。建成后年产新型橡胶18万吨。</span>
+        </div>
+        <div class="font-small">
+            项目地址: <span class="font-color-gray">河北省保定市市南开发区东方路28号</span>
+        </div>
+        <div class="font-small">
+            项目名称: <span class="font-color-gray">河北信达实业有限公司</span>
+        </div>
+    </div>
+    <div *ngIf="task.state !== 1" class="status">
+        <div style="line-height: 2.5;padding:5px 15px;">
+            状态:
+            <span *ngIf="task.state === 2 || task.state === 3" class="font-color-waiting">
+                <span *ngIf="task.state === 2">审核中</span>
+                <span *ngIf="task.state === 3 && task.expired === 0">修改中</span>
+                <span *ngIf="task.state === 3 && task.expired === 1">审核未通过</span>
+            </span>
+            <span *ngIf="task.state === 9" class="font-color-success">
+                <span>审核通过</span>
+                <ion-button
+                        *ngIf="!task.bonusTime"
+                        size="small"
+                        class="small"
+                        style="float:right">
+                    领取奖励
+                </ion-button>
+            </span>
+            <span *ngIf="task.state === 2 || (task.state === 3 && task.expired === 0)"
+                  class="font-small font-color-dark"
+                  style="float:right;line-height: 3">提交后,15分钟完成审核(工作日)</span>
+        </div>
+        <div class="divider"></div>
+        <div>
+            <div class="font-color-primary"
+                 *ngIf="task.bonusTime"
+                 style="width: 100%;text-align: center;padding-top:5px;">
+                <div class="font-small"
+                     style="display:inline-block;vertical-align: middle;padding: 5px;">
+                    <img class="coin" src="assets/icon/coin.png"/>
+                    获得奖励
+                </div>
+                <div class="font-default">100导航币+20信誉值</div>
+            </div>
+            <ul class="action-record">
+                <li *ngIf="task.expired === 1">审核反馈时间: 2018-09-09 18:00:23</li>
+                <li *ngIf="task.expired === 1">任务提交时间: 2018-09-09 18:00:23</li>
+                <li>审核反馈时间: 2018-09-09 18:00:23</li>
+                <li>任务提交时间: 2018-09-09 18:00:23</li>
+                <li>任务提交时间: 2018-09-09 18:00:23</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="font-small">
+        <div style="padding: 10px 0 0 10px">
+            提交内容
+        </div>
+        <div *ngFor="let item of items; let index = index; let last = last">
+            <div class="font-small card">
+                <div style="display: table; width: 100%;">
+                    <div style="display: table-cell;width:1px;white-space: nowrap;">{{index+1}}.</div>
+                    <div class="task-item-name" style="display:table-cell; padding-left:2px;">
+                        <ion-icon *ngIf="item.is_gps == 1" name="pin"></ion-icon>
+                        {{item.name}}
+                        <span *ngIf="task.state === 3 && task.expired === 1" class="font-color-danger"
+                              style="margin-left:5px">
+                            (未通过原因: 不合格)
+                        </span>
+                        <span *ngIf="task.state === 9" class="font-color-success"
+                              style="margin-left:5px">
+                            (审核通过)
+                        </span>
+                    </div>
+                </div>
+                <div style="clear: both;padding:5px 15px;">
+                    <div *ngIf="item.is_gps == 0">
+                        <img *ngFor="let i of [].constructor(item.photo_amount)" style="margin-right:10px;"
+                             src="assets/samples/gd1.png" tappable (click)="showPhoto()"/>
+                    </div>
+                    <div *ngIf="item.is_gps == 1">
+                        保定市河大路36号
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!last" class="divider"></div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer *ngIf="task.state === 3 && task.expired === 1" padding>
+    <ion-button class="button-main" (click)="back()">
+        继续做任务/领取任务
+    </ion-button>
+</ion-footer>

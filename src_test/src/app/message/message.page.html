@@ -1,0 +1,47 @@
+<ion-header no-border>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="back()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            消息
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list no-border>
+        <div *ngFor="let item of items.items" class="list-item">
+            <div class="message-item">
+                <div class="col icon">
+                    <div class="icon-bg icon-bg{{ item.type }}">
+                        <span class="helper"></span>
+                        <img src="assets/icon/{{ iconNames[item.type] }}.png"/>
+                    </div>
+                </div>
+                <div style="margin-left:10px">
+                    <div>
+                        <span class="font-default">
+                            {{ items.types[item.type] }}
+                        </span>
+                        <span *ngIf="item.read == 0" class="new">
+                            new
+                        </span>
+                        <span class="time font-color-gray">
+                            {{ item.time }}
+                        </span>
+                    </div>
+                    <div class="font-color-dark message">
+                        {{ item.message }}
+                        {{ item.message }}
+                    </div>
+                    <div class="font-color-primary">
+                        查看详情
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-list>
+</ion-content>

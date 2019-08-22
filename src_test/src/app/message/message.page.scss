@@ -1,0 +1,54 @@
+.icon-bg {
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 40%;
+}
+
+.icon-bg1 {
+  background-color: var(--ion-color-danger-tint);
+}
+
+.icon-bg2 {
+  background-color: var(--ion-color-secondary-shade);
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.icon-bg img {
+  width: var(--ion-font-size-bigger);
+  height: var(--ion-font-size-bigger);
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.message-item {
+  display: flex;
+}
+
+.message {
+  line-height: 150%;
+  padding: 5px 0;
+}
+
+.time {
+  float: right;
+}
+
+.new {
+  color: red;
+  font-size: var(--ion-font-size-smaller);
+  display: inline-block;
+  border: 1px solid red;
+  padding: 0 3px;
+  margin-left: 10px;
+  border-radius: var(--ion-font-size-smaller);
+}
+
+.icon {
+  flex-shrink: 0;
+}

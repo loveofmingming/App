@@ -1,0 +1,90 @@
+<ion-content class="bg">
+    <ion-list style="margin:0">
+        <ion-list-header class="font-color-success">
+            进行中({{ items.doing.length }})
+        </ion-list-header>
+        <div *ngFor="let item of items.doing" tappable (click)="show(item)" class="card">
+            <table>
+                <tr>
+                    <td class="img">
+                        <img src="assets/samples/{{item.photo}}">
+                    </td>
+                    <td style="padding-left: 10px">
+                        <div class="truncate" style="margin-bottom:5px;">
+                            {{item.title}}
+                            <span *ngIf="item.state != 2" class="font-color-primary">
+                            (还剩13小时)
+                        </span>
+                        </div>
+                        <div style="margin-bottom:5px" class="font-color-gray truncate">
+                            {{item.desc}}
+                        </div>
+                        <div *ngIf="item.state == 1" class="font-color-gray">
+                            距离您大约{{item.distance}}
+                        </div>
+                        <div *ngIf="item.state != 1" class="font-color-gray truncate">
+                            {{item.address}}
+                        </div>
+                    </td>
+                    <td style="width: 80px;text-align: center">
+                        <ion-button (click)="edit($event,item)" *ngIf="item.state != 2" fill="outline" size="small">
+                            <span *ngIf="item.state == 1">做任务</span>
+                            <span *ngIf="item.state == 3">去修改</span>
+                        </ion-button>
+                        <div *ngIf="item.state == 2" class="font-color-waiting">
+                            审核中
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header class="font-color-gray">
+            已结束({{ items.done.length }})
+        </ion-list-header>
+        <div *ngFor="let item of items.done" tappable (click)="show(item)" class="card">
+            <table>
+                <tr>
+                    <td class="img">
+                        <img src="assets/samples/{{item.photo}}">
+                    </td>
+                    <td style="padding-left: 10px">
+                        <div class="truncate" style="margin-bottom:5px;">
+                            {{item.title}}
+                        </div>
+                        <div style="margin-bottom:5px" class="font-color-gray truncate">
+                            {{item.desc}}
+                        </div>
+                        <div class="font-color-gray truncate">
+                            {{item.address}}
+                        </div>
+                    </td>
+                    <td style="width: 80px;text-align: center">
+                        <ion-button *ngIf="item.state == 9 && !item.bonusTime" size="small">
+                            领奖励
+                        </ion-button>
+                        <div *ngIf="item.state == 9 && item.bonusTime" class="font-color-danger">
+                            <div class="font-color-gray">
+                                已获奖励
+                            </div>
+                            <div class="font-color-primary">
+                                {{ item.bonus.yuan }}元
+                            </div>
+                            <div class="font-color-primary">
+                                {{ item.bonus.credit }}信誉值
+                            </div>
+                        </div>
+                        <div *ngIf="item.state == 3" class="font-color-danger">
+                            审核未通过
+                        </div>
+                        <div *ngIf="item.state == 1" class="font-color-gray">
+                            未执行
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-list>
+</ion-content>

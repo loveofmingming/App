@@ -1,0 +1,52 @@
+<ion-header no-border>
+    <second-page-header primary="true" backUrl="home/my">
+        信誉值
+    </second-page-header>
+    <div class="main header" padding>
+        <div class="font-small">当前</div>
+        <div class="font-large" style="padding: 10px">
+            90
+            <span class="font-small">
+                信誉值
+            </span>
+        </div>
+        <div class="font-small" style="text-align: right;margin-top:10px;">
+            信誉值是什么?
+        </div>
+    </div>
+</ion-header>
+
+<ion-content class="bg">
+    <div class="row list-title">
+        <div>
+            <div class="indicator"></div>
+        </div>
+        <div style="margin-top:-2px;margin-bottom: -3px;">
+            获奖记录
+        </div>
+    </div>
+    <ion-list>
+        <div *ngFor="let item of items" class="list-item">
+            <table>
+                <tr>
+                    <td>
+                        {{ item.title }}
+                    </td>
+                    <td class="amount">
+                        + {{ item.amount }}
+                    </td>
+                </tr>
+            </table>
+            <table class="font-smaller font-color-gray">
+                <tr>
+                    <td class="truncate">
+                        {{ item.desc }}
+                    </td>
+                    <td>
+                        {{ item.bonusTime }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </ion-list>
+</ion-content>

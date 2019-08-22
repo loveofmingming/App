@@ -1,0 +1,56 @@
+<ion-header>
+  <div class="yemei">
+      <ul name="baise">
+          <li class="fanhui" [routerLink]="['/default/wode']">
+              <ion-icon name="arrow-back"></ion-icon>
+          </li>
+          <!--<ion-buttons slot="end">-->
+              <!--<ion-back-button defaultHref="/default/wode" text="返回"></ion-back-button>-->
+          <!--</ion-buttons>-->
+          <li class="names">基本信息</li>
+          <li class="right_title"></li>
+      </ul>
+    </div>
+</ion-header>
+
+<ion-content>
+
+  <div class="zhezhao" id="zhezhao">
+    <div class="alert_div" id="alert_div">
+        <ul name="titles">
+            <li name="names">公司名称</li>
+            <li name="guanbi" (click)="onClose()"><img src="../../assets/img/guanbi_io.png"></li>
+        </ul>
+        <ul name="inputs"><input type="text"></ul>
+        <ul name="tijiao">保存</ul>
+    </div>
+</div>
+    <!--上貌似为无用-->
+
+
+  <div class="bg_body">
+    <div class="shezhi_body">
+      <ul>
+        <li class="name">头像：</li>
+        <li *ngIf="userTouxiang == ''; else elseBlock" class="vals" (click)="up_touxiang()">
+          <img src="../../assets/img/ls.jpg">
+        </li>
+        <ng-template #elseBlock>
+            <li class="vals" (click)="up_touxiang()">
+                <img src="{{userTouxiang}}">
+                <!--<img src="{{img_url}}/{{userTouxiang}}">-->
+                <!--<img src="../../assets/img/ls.jpg">-->
+            </li>
+        </ng-template>
+      </ul>
+      <ul>
+        <li class="name">姓名：</li>
+        <li class="vals" (click)="on_name()">{{userName}} ></li>
+      </ul>
+      <ul>
+        <li class="name">所在公司：</li>
+        <li class="vals" (click)="on_gs_name()">{{userCompany}} ></li>
+      </ul> 
+    </div>
+  </div>
+</ion-content>

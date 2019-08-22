@@ -1,0 +1,12 @@
+export class ConfigModel {
+  //static BASE = 'http://crowd.okcis.cn/';
+  // static BASE = 'http://192.168.7.135:5352/';
+  static BASE = 'http://192.168.15.16/';
+  static BASE_URL = ConfigModel.BASE + 'houtai/API';
+  static BASE_IMG_URL = ConfigModel.BASE + 'houtai/images2010/crowd/tasks';
+  static BASE_IMG_USER_URL = ConfigModel.BASE + 'houtai/images2010/crowd/user';
+  static BASE_TASK_LIST_IMG = ConfigModel.BASE + 'houtai/images2010/shenhe/tasks/icons';
+  static BASE_APP_ID = 'wx8122740043c411ce';
+  static BASE_APP_SECRET = 'e409a397341bc8e3a86798f4f5758517';
+  static test = '123';
+}

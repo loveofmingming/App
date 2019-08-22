@@ -1,0 +1,11 @@
+<ion-toolbar color="{{ _isPrimary? 'primary':'' }}">
+    <ion-buttons slot="start">
+        <!--ionic4的bug，如果直接返回，将不能回到home/my，而是回到home-->
+        <ion-back-button defaultHref="home" (click)="back()" text=""
+                         color="{{ _isPrimary? 'secondary':'dark' }} ">
+        </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+        <ng-content></ng-content>
+    </ion-title>
+</ion-toolbar>

@@ -1,0 +1,72 @@
+<ion-header>
+    <div tappable (click)="goProfile()" style="width: 100%; display: inline-block">
+        <div style="float: left;display: inline-block">
+            李林申
+        </div>
+        <div style="float: right;display: inline-block">
+            <ion-avatar>
+                <img src="assets/avatar.jpg">
+            </ion-avatar>
+        </div>
+    </div>
+</ion-header>
+<ion-content class="bg">
+    <div class="card">
+        <table>
+            <tr class="font-color-dark">
+                <td tappable [routerLink]="['/rmb']">
+                    小金库
+                </td>
+                <td tappable [routerLink]="['/dhb']">
+                    导航币
+                </td>
+                <td tappable [routerLink]="['/credit']">
+                    信誉值
+                </td>
+            </tr>
+            <tr class="font-big">
+                <td tappable [routerLink]="['/rmb']">
+                    60
+                </td>
+                <td tappable [routerLink]="['/dhb']">
+                    110
+                </td>
+                <td tappable [routerLink]="['/credit']">
+                    90
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ion-button (click)="toWithdraw()" size="small" fill="outline">
+                        去提现
+                    </ion-button>
+                </td>
+                <td>
+                    <ion-button size="small" fill="outline">
+                        去兑换
+                    </ion-button>
+                </td>
+                <td>
+                    <span class="font-color-primary">
+                        如何获取?
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <ion-list>
+        <ion-item [routerLink]="['/feedback']" button detail lines="full">
+            <ion-icon name="clipboard"></ion-icon>
+            <ion-label>意见与反馈</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/about']" button detail lines="full">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>关于</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/setting']" button detail lines="none">
+            <ion-icon name="cog"></ion-icon>
+            <ion-label>设置</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

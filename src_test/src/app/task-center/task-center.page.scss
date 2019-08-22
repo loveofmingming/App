@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+ion-toolbar {
+  padding: 0 5px;
+}
+
+ion-tab-bar.inner {
+  border-bottom: 2px solid var(--ion-color-light);
+}
+
+td.img {
+  width: var(--ion-thumb-large);
+}
+
+.tab-btn-selected {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 1px;
+}
+
+.tab-btn-selected[aria-selected=true] {
+  box-shadow: 0 2px 0 0 var(--ion-color-primary);
+}

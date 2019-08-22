@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="login">
+    <ul class="titles">登录</ul>
+    <ul class="inputs">
+        <li class="names">手机号</li>
+        <li class="inputs_sjh">
+          <input type="text" class="phone" placeholder="请输入手机号" [(ngModel)]="sjName">
+        </li>
+        <li class="huoqu"> 
+            <samp>
+              <button ion-button full  (click)="getYanzheng()" [disabled]="!mobileCode.disable"  >{{mobileCode.name}}</button>
+            </samp>
+        </li>
+    </ul>
+    <ul class="inputs">
+        <li class="names">验证码</li>
+        <li class="inputs_sjh">
+          <input type="text" class="yzm" placeholder="请输入验证码" [(ngModel)]="yzmName">
+        </li>
+    </ul>
+    <ul class="denglu">
+      <button ion-button full  (click)="login();" [disabled]="!logoCode.disable" >{{logoCode.name}}</button>
+	  </ul> 
+  </div>
+
+  <div class="login_bottom">
+    <ul class="names">微信登录</ul>
+    <ul class="io" (click)="weChatAuth()"><img src="./assets/img/wx_io.png"/></ul>
+  </div>
+</ion-content>
+  

@@ -1,0 +1,32 @@
+<ion-header no-border>
+    <second-page-header primary="true" backUrl="home/my">
+        小金库
+    </second-page-header>
+    <div class="main header" padding>
+        <div class="font-small">余额</div>
+        <div class="font-large" style="padding: 10px">
+            60
+            <span class="font-small">
+            元
+            </span>
+        </div>
+        <div class="font-small" style="margin-top: 10px">
+            <ion-button (click)="toWithdraw()" class="small" size="small" color="secondary" fill="outline">
+                去提现
+            </ion-button>
+        </div>
+    </div>
+</ion-header>
+
+<ion-content>
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+            <ion-tab-button class="tab-btn-selected" tab="in">
+                <ion-label>收入</ion-label>
+            </ion-tab-button>
+            <ion-tab-button class="tab-btn-selected" tab="out">
+                <ion-label>转出</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+</ion-content>

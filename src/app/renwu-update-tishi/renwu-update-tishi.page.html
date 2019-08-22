@@ -1,0 +1,84 @@
+<ion-header>
+  <div class="yemei">
+      <ul name="baise">
+          <li class="fanhui" (click)="back()">
+              <ion-icon name="arrow-back"></ion-icon>
+          </li>
+          <li class="names">任务详情</li>
+          <!-- <li class="right_title" [routerLink]="['/renwu-con',tid,2]">任务说明</li> --> 
+          <li class="right_title" (click)="open_con(tid,2)">任务说明</li>
+      </ul>
+    </div>
+</ion-header>
+
+<ion-content>
+  <div class="renwu_tishi">
+      您的部分提交项未合格，请尽快修改，过期将自动视为不合格。<br>
+      <span *ngFor="let item_new of taskInfo.mytask?.my_tt_list; index as k;">
+        <span *ngIf="item_new.my_task_items.reason_rejected != '0'">
+        {{k+1}}、{{item_new.name}}  {{item_new.my_task_items.reason_rejected}}<br>
+        </span>
+      </span>
+      <span *ngIf="taskInfo.mytask?.limit_time !='' ">（还剩{{taskInfo.mytask?.limit_time}}）</span>
+      <span *ngIf="taskInfo.mytask?.limit_time =='' ">（已过期）</span>
+      <!-- <samp [routerLink]="['/renwu-update',mid,tid]">去修改</samp> -->
+      <samp *ngIf="taskInfo.mytask?.limit_time !='' " (click)="open_renwu_update(mid,tid)">去修改</samp>
+      <samp *ngIf="taskInfo.mytask?.limit_time !='' " (click)="fangqiUpdate()">放弃修改</samp>
+  </div>
+
+
+  <div class="renwu_con_jbqk no_bian">
+      <ul class="titles">
+        <li name="zhaopian"><img [src]="taskInfo.task?.top_img_name"></li>
+        <li name="names">项目现场拍照</li>
+        <li name="jiangli"> </li>
+      </ul>
+      <ul class="f_titles">
+          <samp>项目名称：</samp>{{taskInfo.task?.project}}<br>
+          <samp>项目介绍：</samp>{{taskInfo.task?.description}}<br>
+          <samp>项目地址：</samp>{{taskInfo.task?.address}}<br>
+          <samp>项目单位：</samp>{{taskInfo.task?.owner}}<br> 
+      </ul>
+  </div>
+
+
+  <!-- <div class="renwu_zhuangtai">
+    <ul class="jianju"></ul>
+    <ul class="titles">状态:<samp name="lanse">修改中</samp> <samp name="youce">提交后，15分钟内完成审核</samp></ul>
+    <ul class="lists">审核反馈时间：2018-09-09     18:00</ul>
+    <ul class="lists">任务提交时间：{{taskInfo.task.created_tj}}</ul>
+    <ul class="lists">任务领取时间：{{taskInfo.task.created_get}}</ul>
+  </div>  -->
+
+
+  <div class="renwu_zhuangtai">
+      <ul class="jianju"></ul>
+      <ul class="titles">状态:<samp name="lanse">修改中</samp> <samp name="youce">提交后，15分钟内完成审核</samp></ul>
+      <ul class="lists" *ngFor="let item_vv of taskInfo.mytask?.action_records; index as i_v;" >
+          <samp *ngIf="item_vv.action==1">任务领取时间：{{item_vv.created}}</samp>
+          <samp *ngIf="item_vv.action==2">任务提交时间：{{item_vv.created}}</samp>
+          <samp *ngIf="item_vv.action==3">审核反馈时间：{{item_vv.created}}（{{item_vv.reason_rejected}}）</samp>
+          <samp *ngIf="item_vv.action==9">审核通过时间：{{item_vv.created}}</samp>
+          <samp *ngIf="item_vv.action==11">奖励领取时间：{{item_vv.created}}</samp>
+          <samp *ngIf="item_vv.action==10">任务已过期</samp>
+      </ul>
+  </div> 
+
+
+    
+  <div class="renwu_con_miaoshu">
+    <ul class="jianju"></ul>    
+    <ul class="titles_2">提交内容：</ul>
+
+
+    <ul class="lists" *ngFor = " let item of taskInfo.mytask?.my_tt_list; index as i;">      
+        <li name="titles">{{i+1}}、<samp>{{item.name}}</samp> </li>
+        <li name="imgs" *ngIf="item.is_gps!=1">
+          <samp *ngFor="let tasksListConTtlist of item.img_name; index as ti;">
+              <img [src] = "img_url+'/'+tasksListConTtlist.img_name" >
+          </samp>
+        </li>
+        <li name="titles" *ngIf="item.is_gps==1">{{taskInfo.mytask?.address}} </li>
+    </ul>
+  </div>
+</ion-content>

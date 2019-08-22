@@ -1,0 +1,7 @@
+{
+  "name": "zb2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

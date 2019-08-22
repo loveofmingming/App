@@ -1,0 +1,22 @@
+<ion-content padding>
+    <div class="main">
+        <div class="font-large" style="padding:50px">登录</div>
+        <ion-item no-padding="">
+            <ion-label>手机号</ion-label>
+            <ion-input placeholder="请输入手机号码"></ion-input>
+            <div class="v-divider"></div>
+            <ion-label style="margin-left:10px">获取验证码</ion-label>
+        </ion-item>
+        <ion-item no-padding="">
+            <ion-label>验证码</ion-label>
+            <ion-input placeholder="请输入验证码"></ion-input>
+        </ion-item>
+        <ion-button style="margin-top:50px" class="button-main" href="home">登录</ion-button>
+    </div>
+</ion-content>
+<ion-footer no-border>
+    <div style="padding-bottom: 50px;text-align: center;width: 100%" tappable (click)="mobileBind()">
+        <div style="padding-bottom: 10px">微信登录</div>
+        <img src="assets/wechat.png" width="52" height="52">
+    </div>
+</ion-footer>
