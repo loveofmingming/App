@@ -61,7 +61,7 @@
     "core-js": "^2.6.9",
     "hammerjs": "^2.0.8",
     "jpush-phonegap-plugin": "~3.6.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "observable": "^2.1.4",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.2",
